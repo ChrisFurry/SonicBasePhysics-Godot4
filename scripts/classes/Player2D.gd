@@ -95,6 +95,8 @@ func substate_jump()->void:
 	if(jumpHighFlag && !jump && movement.y < -currentPhysics.jumpLow):
 		jumpHighFlag = false;
 		movement.y = -currentPhysics.jumpLow;
+	# How did I forget about airdrag?
+	if (movement.y < 0 && movement.y > -4): movement.x -= ((movement.x / 0.125) / 256) * Game.physicsDelta;
 	# Gravity
 	movement.y += currentPhysics.gravity;
 	# Return to ground substate
