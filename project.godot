@@ -32,7 +32,8 @@ _global_script_class_icons={
 
 [application]
 
-config/name="Techno-Break Rewrite"
+config/name="SonicBasePhysics"
+config/description="A simple Sonic Framework"
 run/main_scene="res://scenes/engine/Init.scn"
 config/features=PackedStringArray("4.0")
 config/icon="res://icon.png"
