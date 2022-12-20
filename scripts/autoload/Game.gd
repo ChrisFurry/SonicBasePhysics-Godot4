@@ -5,7 +5,7 @@ var targetFps:int = 60;
 var delta:float = .0;
 var physicsDelta:float = .0;
 
-var noDeltaTiming:bool = true;
+var noDeltaTiming:bool = false;
 
 # Called when the node enters the scene tree for the first time.
 func _ready():

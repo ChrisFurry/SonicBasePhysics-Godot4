@@ -74,7 +74,7 @@ func _draw(): # Since we don't have a sprite, just draw a faded rect of the play
 # States and SubStates
 # For controlling the player mostly
 func state_normal()->void:
-	input = _get_controller_input(controllerID);
+	input = _get_controller_input(controllerID,true);
 	if(subState.is_valid()): subState.call();
 	_handle_physics();
 
@@ -382,6 +382,9 @@ func _disable_sensors()->void:
 	wallRaycast.enabled = false;
 	roofRaycast.enabled = false;
 
-func _get_controller_input(id:int):
+func _get_controller_input(id:int,physics:bool):
+	if(physics):
+		if(Controller.controllerInputsPhysics.size() <= 0): return ControllerInput.new();
+		return Controller.controllerInputsPhysics[clamp(id,0,Controller.controllerInputsPhysics.size()-1)];
 	if(Controller.controllerInputs.size() <= 0): return ControllerInput.new();
 	return Controller.controllerInputs[clamp(id,0,Controller.controllerInputs.size()-1)];

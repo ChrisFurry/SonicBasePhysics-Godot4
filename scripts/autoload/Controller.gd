@@ -1,6 +1,7 @@
 extends Node
 
 var controllerInputs = [];
+var controllerInputsPhysics = [];
 
 func _ready():
 	process_priority = -99;
@@ -9,6 +10,10 @@ func _ready():
 func _process(_delta):
 	controllerInputs = [];
 	controllerInputs.append(_get_input_from_inputmap("1"));
+
+func _physics_process(_delta):
+	controllerInputsPhysics = [];
+	controllerInputsPhysics.append(_get_input_from_inputmap("1"));
 
 func _get_input_from_inputmap(start:String):
 	# The temp var
