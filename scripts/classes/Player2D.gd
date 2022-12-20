@@ -4,7 +4,7 @@ class_name Player2D
 # Define Identity
 @export var controllerID:int = 0;
 # Define Input
-var input:Resource = ControllerInput;
+var input:Resource = ControllerInput.new();
 # Define Movement
 var inertia:float		= 0;
 var movement:Vector2	= Vector2.ZERO;
@@ -74,7 +74,7 @@ func _draw(): # Since we don't have a sprite, just draw a faded rect of the play
 # States and SubStates
 # For controlling the player mostly
 func state_normal()->void:
-	input = _get_controller_input(controllerID,true);
+	input.get_input_from_inputmap(str(controllerID + 1));
 	if(subState.is_valid()): subState.call();
 	_handle_physics();
 
@@ -383,10 +383,3 @@ func _disable_sensors()->void:
 	floorRaycast.enabled = false;
 	wallRaycast.enabled = false;
 	roofRaycast.enabled = false;
-
-func _get_controller_input(id:int,physics:bool):
-	if(physics):
-		if(Controller.controllerInputsPhysics.size() <= 0): return ControllerInput.new();
-		return Controller.controllerInputsPhysics[clamp(id,0,Controller.controllerInputsPhysics.size()-1)];
-	if(Controller.controllerInputs.size() <= 0): return ControllerInput.new();
-	return Controller.controllerInputs[clamp(id,0,Controller.controllerInputs.size()-1)];
