@@ -134,7 +134,7 @@ func action_ground_movement()->void:
 			horizontalControlLock -= Game.physicsDelta;
 			return;
 		if(inertia == .0 || sign(inertia) == hor): inertia = move_toward(inertia,max(6,abs(inertia)) * hor,Game.physicsDelta * currentPhysics.acceleration);
-		else: inertia = move_toward(inertia,0,Game.physicsDelta * currentPhysics.deacceleration);
+		else: inertia = move_toward(inertia,6 * hor,Game.physicsDelta * currentPhysics.deacceleration);
 	else:
 		inertia = move_toward(inertia,0,Game.physicsDelta * currentPhysics.friction);
 # Normal Ariel Movement
