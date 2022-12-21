@@ -46,6 +46,7 @@ Game="*res://scripts/autoload/Game.gd"
 
 window/size/viewport_width=320
 window/size/viewport_height=240
+window/vsync/vsync_mode=0
 window/stretch/mode="canvas_items"
 
 [gui]
