@@ -31,7 +31,7 @@ func _ready():
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta):
 	if(noDeltaTiming):
-		delta = Engine.time_scale;
+		delta = Engine.time_scale / 60;
 		Engine.max_fps = 60;
 		return;
 	else:
@@ -42,7 +42,7 @@ func _process(_delta):
 
 func _physics_process(_delta):
 	if(noDeltaTiming):
-		physicsDelta = Engine.time_scale;
+		physicsDelta = Engine.time_scale / 60;
 		return;
 	physicsDelta = _delta;
 
